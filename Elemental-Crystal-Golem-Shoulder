@@ -1,0 +1,53 @@
+local function Accs(AccsName, char, Mesh, Texture, Scale, CF, Welded, Angle) 
+    local var_1 = Instance.new("Accessory", char) 
+    var_1.Name = AccsName
+    local var_2 = Instance.new("Part", var_1) 
+    var_2.Anchored = false
+    var_2.Massless = true
+    var_2.CanCollide = false
+    var_2.Size = Vector3.new(1, 1, 1) 
+    var_2.Name = "Handle"
+    local var_3 = Instance.new("SpecialMesh", var_2) 
+    var_3.Name = "Mesh"
+    var_3.MeshId = Mesh
+    var_3.TextureId = Texture
+    var_3.Scale = Scale
+    local var_4 = Instance.new("Weld", var_2) 
+    var_4.C0 = CF * Angle
+    var_4.Part0 = var_2
+    var_4.Part1 = char[Welded]
+end
+
+local P = game:GetService("Players").LocalPlayer.Character
+
+Accs("RockAccessory", P, "rbxassetid://4307568890", "rbxassetid://4307568951", Vector3.new(1, 1, 1), CFrame.new(-0.5, -1.5, 0), "Right Arm", CFrame.Angles(0, 0, 0))
+
+local find2 = P:WaitForChild("RockAccessory"):WaitForChild("Handle")
+local attach = Instance.new("Attachment", find2)
+attach.Name = "VFX"
+
+wait(1)
+
+local Trail = Instance.new("Trail", attach)
+Trail.Texture = "rbxassetid://4519882005"
+Trail.Lifetime = 0.2
+Trail.LightEmission = 1
+Trail.LightInfluence = 1
+Trail.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(252, 227, 3)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(253, 227, 3)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(251, 227, 3))
+})
+
+local a0 = Instance.new("Attachment", find2)
+a0.Name = "Attachment0"
+a0.Position = Vector3.new(0, 1, 0)
+
+local a1 = Instance.new("Attachment", find2)
+a1.Name = "Attachment1"
+a1.Position = Vector3.new(0, -1, 0)
+
+wait(1)
+
+Trail.Attachment0 = a0
+Trail.Attachment1 = a1
