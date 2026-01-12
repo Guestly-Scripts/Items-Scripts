@@ -1,1 +1,1 @@
-game.Players.LocalPlayer.Character["Right Leg"]:Destroy()
+game.Players.LocalPlayer.Character["Right Leg"].Transparency = 1
