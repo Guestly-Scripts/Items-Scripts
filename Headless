@@ -1,0 +1,7 @@
+game.Players.LocalPlayer.Character.Head.Transparency = 1
+local face = game.Players.LocalPlayer.Character.Head.face
+if face then
+game.Players.LocalPlayer.Character.Head.face:Destroy()
+end
+
+if not face then return end
